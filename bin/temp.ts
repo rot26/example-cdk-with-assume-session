@@ -18,4 +18,8 @@ new TempStack(app, 'TempStack', {
   // env: { account: '123456789012', region: 'us-east-1' },
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
+
+  // Use the aws-cdk Cli Credentia lSynthesizer to use the credentials from your cli
+  synthesizer: new cdk.CliCredentialsStackSynthesizer({
+  })
 });

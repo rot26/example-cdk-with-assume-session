@@ -8,7 +8,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "cdk:bootstrap": "cdk bootstrap --template cdk-bootstrap.cfn.yaml -vvvv"
   },
   "devDependencies": {
     "@types/jest": "^29.5.4",
