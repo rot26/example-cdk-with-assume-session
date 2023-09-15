@@ -62,7 +62,7 @@ Resources:
             Effect: Allow
             Principal:
               AWS:
-                Fn::Sub: ${}
+                Fn::Sub: arn:aws:iam::${AWS::AccountId}:role/chris-session
             Resource: "*"
   FileAssetsBucketEncryptionKeyAlias:
     Type: AWS::KMS::Alias
@@ -84,10 +84,10 @@ Resources:
               KMSMasterKeyID:
                   Fn::Sub: ${FileAssetsBucketEncryptionKey.Arn}
       PublicAccessBlockConfiguration:
-        - BlockPublicAcls: true
-          BlockPublicPolicy: true
-          IgnorePublicAcls: true
-          RestrictPublicBuckets: true
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
       VersioningConfiguration:
         Status: Enabled
       LifecycleConfiguration:
@@ -96,8 +96,8 @@ Resources:
             Status: Enabled
             NoncurrentVersionExpiration:
               NoncurrentDays: 90
-    UpdateReplacePolicy: Destroy
-    DeletionPolicy: Destroy
+    UpdateReplacePolicy: Delete
+    DeletionPolicy: Delete
   StagingBucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
